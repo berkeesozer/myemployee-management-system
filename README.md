@@ -2,7 +2,9 @@
 
 
 Back-end Technology: Python Django DRF
+
 Front-end Technology: HTML/CSS
+
 Database: SQLite3
 
 # Prerequisites
