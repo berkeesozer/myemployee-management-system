@@ -33,7 +33,7 @@ python manage.py runserver
 ADMIN USERNAME: admin
 ADMIN PASSWORD: 123
 
-If you want to look at the database in a different envinronment, I used DB Browser for SQLite. You can just open the "db.sqlite3" file in the project folder using that tool.
+If you want to look at the database in a different environment, I used DB Browser for SQLite. You can just open the "db.sqlite3" file in the project folder using that DB Browser.
 
 ![1](https://github.com/user-attachments/assets/ab58a5d1-8e73-4cd9-817d-6b28dfd9f377)
 
