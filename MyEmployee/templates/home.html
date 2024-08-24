@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Welcome to MyEmployee Management System!</h1>
+    
+    <div class="row">
+        <!-- Introduction -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="card-title mb-3">About MyEmployee</h2>
+                    <p class="card-text">
+                        Welcome to the MyEmployee Management System, a tool designed to help you manage your employees efficiently. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3"><i class="fas fa-user-plus fa-2x"></i></h3>
+                    <h4 class="card-subtitle mb-2">Add Employees</h4>
+                    <p class="card-text">
+                        As an admin, you have the ability to add new employees to the system. Simply enter their details, upload their photo, and 
+                        they're added to the employee list.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3"><i class="fas fa-list-alt fa-2x"></i></h3>
+                    <h4 class="card-subtitle mb-2">View Employee Details</h4>
+                    <p class="card-text">
+                        View detailed information about each employee, including their job title, start date, and contact information. You can 
+                        easily access and manage all employee records from one convenient location.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'employee_list' %}" class="btn btn-primary btn-lg">View Employee List</a>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}

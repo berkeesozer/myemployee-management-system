@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Employee List{% endblock %}
+
+{% block content %}
+<h1>Employee List</h1>
+
+<!-- Sorting Controls -->
+<div class="mb-3">
+    <form method="get" action="{% url 'employee_list' %}">
+        <div class="form-group">
+            <label for="sort">Sort By:</label>
+            <select id="sort" name="sort" class="form-control" onchange="this.form.submit()">
+                <option value="last_name" {% if sort_by == 'last_name' %}selected{% endif %}>Last Name</option>
+                <option value="start_date" {% if sort_by == 'start_date' %}selected{% endif %}>Start Date</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<!-- Employee List Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Title</th>
+            <th>Start Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in page_obj %}
+        <tr>
+            <td>
+                    <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}" style="width: 50px; height: 50px; object-fit: cover;">
+            </td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.job_title }}</td>
+            <td>{{ employee.start_date }}</td>
+            <td>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#employeeModal{{ employee.id }}">
+                    See Details
+                </button>
+            </td>
+        </tr>
+
+        <!-- Employee Details -->
+        <div class="modal fade" id="employeeModal{{ employee.id }}" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel{{ employee.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="employeeModalLabel{{ employee.id }}">Employee Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-3">
+
+                                <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}" style="width: 150px; height: 150px; object-fit: cover;">
+                        </div>
+                        <p><strong>First Name:</strong> {{ employee.first_name }}</p>
+                        <p><strong>Last Name:</strong> {{ employee.last_name }}</p>
+                        <p><strong>Job Title:</strong> {{ employee.job_title }}</p>
+                        <p><strong>Start Date:</strong> {{ employee.start_date }}</p>
+                        <p><strong>Home Address:</strong> {{ employee.home_address }}</p>
+                        <p><strong>Mailing Address:</strong> {{ employee.mailing_address }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="d-flex justify-content-between">
+    <div>
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    </div>
+    <div>
+        <nav>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1{% if sort_by %}&sort={{ sort_by }}{% endif %}">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if sort_by %}&sort={{ sort_by }}{% endif %}">Previous</a>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}{% if sort_by %}&sort={{ sort_by }}{% endif %}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if sort_by %}&sort={{ sort_by }}{% endif %}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if sort_by %}&sort={{ sort_by }}{% endif %}">Last</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

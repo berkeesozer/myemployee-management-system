@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MyEmployee{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #002147;
+            padding-top: 20px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar .app-name {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidebar .app-name img {
+            width: 40px; 
+            height: auto;
+            margin-right: 10px;
+        }
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .sidebar a:hover {
+            background-color: #001528; 
+        }
+        .container {
+            margin-left: 250px; 
+            padding: 20px;
+        }
+        .form-container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .btn-primary {
+            background-color: #0056b3;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="app-name">
+            <img src="{% static 'images/icon.png' %}" alt="App Icon">
+            MyEmployee
+        </div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'employee_list' %}">Employees</a>
+        <a href="{% url 'add_employee' %}">Add Employee</a>
+        <a href="{% url 'login' %}">Log Out</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
