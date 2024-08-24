@@ -1,5 +1,4 @@
-# Berke_Sozer_MyEmployee
-MyEmployee - Radity Test Case 24 Hours
+# Berke Sözer Radity Test Case 24 hours
 
 
 Back-end Technology: Python Django DRF
@@ -13,10 +12,11 @@ In any EDI's terminal or using regular CMD, inside the directory of the project 
 You will also need pip, the Python package installer. 
 
 Django ---> pip install django
+
 DRF ---> pip install djangorestframework
+
 Pillow ---> pip install Pillow
 
-# Apply Database Migrations
 
 # Run database migrations (gerek olmayabilir)
 python manage.py makemigrations
