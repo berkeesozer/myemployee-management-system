@@ -15,9 +15,9 @@ Before running the project, make sure you have the following installed:
 - Python 3.x
 - Pip (Python package installer)
 
-### Install Required Packages
+### Required Packages
 
-In your terminal or CMD, navigate to the project directory and install the following packages:
+In your terminal or CMD, navigate to the project directory and install the following packages
 
 ```bash
 # Install Django
@@ -30,6 +30,23 @@ pip install djangorestframework
 pip install Pillow
 ```
 
+### Database Migrations & Running the Server
+
+Run the following commands to create and apply database migrations
+
+```bash
+# Make migrations
+python manage.py makemigrations
+
+# Apply migrations
+python manage.py migrate
+```
+
+After setting up the database, start the Django server
+
+```bash
+python manage.py runserver
+```
 
 
 ![1](https://github.com/user-attachments/assets/ab58a5d1-8e73-4cd9-817d-6b28dfd9f377)
