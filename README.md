@@ -1,32 +1,34 @@
 # MyEmployee
 
-Back-end Technology: Python Django DRF
+A web application for managing employee data.
 
-Front-end Technology: HTML/CSS
+## Technologies Used
 
-Database: SQLite3
+- **Back-end**: Python Django DRF
+- **Front-end**: HTML/CSS
+- **Database**: SQLite3
 
-# Prerequisites
+## Prerequisites
 
-In any EDI's terminal or using regular CMD, inside the directory of the project some components should be installed.
+Before running the project, make sure you have the following installed:
 
-You will also need pip, the Python package installer. 
+- Python 3.x
+- Pip (Python package installer)
 
-Django ---> pip install django
+### Install Required Packages
 
-DRF ---> pip install djangorestframework
+In your terminal or CMD, navigate to the project directory and install the following packages:
 
-Pillow ---> pip install Pillow
+```bash
+# Install Django
+pip install django
 
+# Install Django Rest Framework (DRF)
+pip install djangorestframework
 
-# Run database migrations
-python manage.py makemigrations
-
-python manage.py migrate
-
-# Run the server
-
-python manage.py runserver
+# Install Pillow for handling image files
+pip install Pillow
+```
 
 
 
